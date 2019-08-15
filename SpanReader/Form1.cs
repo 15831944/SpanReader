@@ -24,6 +24,8 @@ namespace SpanReader
             CMakeDataTable<_st_type1> mkTable = new CMakeDataTable<_st_type1>();
             DataTable dt = mkTable.DATATABLE;
 
+            ///
+
         }
     }
 }

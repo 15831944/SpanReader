@@ -23,7 +23,11 @@ namespace SpanReader.util
 
         public void MakeDataTable()
         {
+            
             m_DT = new DataTable();
+
+            
+            m_DT.TableName = TR.GetType().Name.ToString();
             FieldInfo[] info = TR.GetType().GetFields();
 
             foreach (var item in info)
@@ -54,6 +58,7 @@ namespace SpanReader.util
             {
            
                 object val = item.GetValue(obj);
+
                 DR[item.Name] = val;
 
 

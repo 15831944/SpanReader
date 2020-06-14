@@ -21,10 +21,11 @@ namespace SpanReader
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            CMakeDataTable<_st_type1> mkTable = new CMakeDataTable<_st_type1>();
-            DataTable dt = mkTable.DATATABLE;
+            //CMakeDataTable<_st_type1> mkTable = new CMakeDataTable<_st_type1>();
+            //DataTable dt = mkTable.DATATABLE;
 
-            ///
+            CMakeDataTable<_st_type2> mkTable = new CMakeDataTable<_st_type2>();
+            DataTable dt = mkTable.DATATABLE;
 
         }
     }

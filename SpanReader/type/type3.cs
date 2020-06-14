@@ -4,16 +4,15 @@ using System.Runtime.InteropServices;
 
 [Serializable]
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 1)]
-public struct _st_typeS
+public struct _st_type3
 {
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
     public string    sId;
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 6)]
     public string    sCombined_Commodity_Code;
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
-    public string    sScan_Inter_Spread_Method_Code;
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
-    public string    sNumber_of_Tiers;
+    public string    sIntracommodity_Spread_Charge_Method_Code;
+   
 
     //tier1
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
@@ -48,18 +47,17 @@ public struct _st_typeS
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 6)]
     public string sTier4_Ending_Month;
 
-    //tier5
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
-    public string sTier5_Tier_number;
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 6)]
-    public string sTier5_Starting_Month;
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 6)]
-    public string sTier5_Ending_Month;
+    public string sFiller1;
 
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 4)]
+    public string sInitial_to_Maintenance_Ratio_Member;
 
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 4)]
+    public string sInitial_to_Maintenance_Ratio_Hedger;
 
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 6)]
-    public string sWeighted_Futures_Price_Risk_Caculation_Method;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 4)]
+    public string sInitial_to_Maintenance_Ratio_Speculator;
 
     //Tier 1
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
@@ -86,29 +84,8 @@ public struct _st_typeS
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
     public string sTier4_Ending_Day_Week_Code;
 
-
-    //Tier 5
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
-    public string sTier5_Starting_Day_Week_Code;
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
-    public string sTier5_Ending_Day_Week_Code;
-
-
-    //Shot Option Minimum
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 7)]
-    public string sTier1_Shot_Option_Minimum_Charge_rate;
-
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 7)]
-    public string sTier2_Shot_Option_Minimum_Charge_rate;
-
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 7)]
-    public string sTier3_Shot_Option_Minimum_Charge_rate;
-
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 7)]
-    public string sTier4_Shot_Option_Minimum_Charge_rate;
-
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 7)]
-    public string sTier5_Shot_Option_Minimum_Charge_rate;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 36)]
+    public string sFiller2;
 
 
 }

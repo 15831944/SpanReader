@@ -17,29 +17,26 @@ public class CTrans<T> where T: struct
     {
 
         //입력받은 string을 Byte 배열로 변환 
-        byte[] byteData;
+        
 
         int type_size = Marshal.SizeOf(typeof(T));
-        byteData = Encoding.UTF8.GetBytes(streamData.ToString().PadRight(type_size));
+        byte[] byteData = Encoding.Unicode.GetBytes(streamData.ToString().PadRight(type_size));
 
-        Type objtype;
-        objtype = typeof(T);
+        
+        
 
-        int size = Marshal.SizeOf(objtype);
-
-            if (size > byteData.Length)
+            if (type_size > byteData.Length)
             {
-                
                 return m_tr;
             }
 
-            IntPtr buffer = Marshal.AllocHGlobal(size);
-            Marshal.Copy(byteData, 0, buffer, size);
+            IntPtr buffer = Marshal.AllocHGlobal(type_size);
+            Marshal.Copy(byteData, 0, buffer, type_size);
 
-            object obj = Marshal.PtrToStructure(buffer, objtype);
+            T obj = (T)Marshal.PtrToStructure(buffer, typeof(T));
             Marshal.FreeHGlobal(buffer);
 
-            return (T)obj;
+            return obj;
     }
 
 

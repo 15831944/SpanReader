@@ -33,7 +33,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dialogs.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDialogs.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,25 +64,138 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mscreen\mCCM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mscreen\mCCM.Designer.cs">
+      <DependentUpon>mCCM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mscreen\mkSeriesToSeries.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mscreen\mkSeriesToSeries.Designer.cs">
+      <DependentUpon>mkSeriesToSeries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mscreen\mMrktInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mscreen\mMrktInfo.Designer.cs">
+      <DependentUpon>mMrktInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="screen\filetype1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\filetype1.Designer.cs">
+      <DependentUpon>filetype1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\filetype2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\filetype2.Designer.cs">
+      <DependentUpon>filetype2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\filetype3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\filetype3.Designer.cs">
+      <DependentUpon>filetype3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\filetype5.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\filetype5.Designer.cs">
+      <DependentUpon>filetype5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\filetype8.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\filetype8.Designer.cs">
+      <DependentUpon>filetype8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\fileTypeB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\fileTypeB.Designer.cs">
+      <DependentUpon>fileTypeB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\fileTypeC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\fileTypeC.Designer.cs">
+      <DependentUpon>fileTypeC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\filetypeE.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\filetypeE.Designer.cs">
+      <DependentUpon>filetypeE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\filetypeP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\filetypeP.Designer.cs">
+      <DependentUpon>filetypeP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\filetypeR.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\filetypeR.Designer.cs">
+      <DependentUpon>filetypeR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\filetypeS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\filetypeS.Designer.cs">
+      <DependentUpon>filetypeS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\filetypeZ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\filetypeZ.Designer.cs">
+      <DependentUpon>filetypeZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="spanMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="spanMain.Designer.cs">
+      <DependentUpon>spanMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="type\type1.cs" />
+    <Compile Include="type\type5.cs" />
+    <Compile Include="type\type2 - 복사본.cs" />
     <Compile Include="type\type2.cs" />
+    <Compile Include="type\typeB.cs" />
     <Compile Include="type\type81.cs" />
     <Compile Include="type\type82.cs" />
     <Compile Include="type\typeC.cs" />
     <Compile Include="type\typeE.cs" />
     <Compile Include="type\typeP.cs" />
     <Compile Include="type\typeR.cs" />
+    <Compile Include="type\type3.cs" />
+    <Compile Include="type\typeZ.cs" />
     <Compile Include="type\typeS.cs" />
     <Compile Include="type\typeT.cs" />
     <Compile Include="type\typeV.cs" />
     <Compile Include="type\typeX.cs" />
     <Compile Include="util\CMakeDataTable.cs" />
+    <Compile Include="util\CSpanData.cs" />
     <Compile Include="util\CTrans.cs" />
+    <Compile Include="util\CUtil.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mscreen\mCCM.resx">
+      <DependentUpon>mCCM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mscreen\mkSeriesToSeries.resx">
+      <DependentUpon>mkSeriesToSeries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mscreen\mMrktInfo.resx">
+      <DependentUpon>mMrktInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -80,6 +205,45 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="screen\filetype1.resx">
+      <DependentUpon>filetype1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\filetype2.resx">
+      <DependentUpon>filetype2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\filetype3.resx">
+      <DependentUpon>filetype3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\filetype5.resx">
+      <DependentUpon>filetype5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\filetype8.resx">
+      <DependentUpon>filetype8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\fileTypeB.resx">
+      <DependentUpon>fileTypeB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\fileTypeC.resx">
+      <DependentUpon>fileTypeC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\filetypeE.resx">
+      <DependentUpon>filetypeE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\filetypeP.resx">
+      <DependentUpon>filetypeP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\filetypeR.resx">
+      <DependentUpon>filetypeR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\filetypeS.resx">
+      <DependentUpon>filetypeS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\filetypeZ.resx">
+      <DependentUpon>filetypeZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="spanMain.resx">
+      <DependentUpon>spanMain.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

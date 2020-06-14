@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Pack=1)]
+[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 1)]
 public struct _st_type81
 {
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]

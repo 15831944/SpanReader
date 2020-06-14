@@ -3,24 +3,24 @@ using System.Runtime.InteropServices;
 
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Pack=1)]
-public struct _st_type2_arr1
+[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode, Pack=1)]
+public struct _st_type2_arr
 {
 
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 10)]
-    char    sCommodity_Code;
+    public string    sCommodity_Code;
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 3)]
-    char    sContract_Type;
+    public string sContract_Type;
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
-    char    sRisk_Array_Decimal_Locator;
+    public string sRisk_Array_Decimal_Locator;
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
-    char    sRisk_Array_Decimal_Sign;
+    public string sRisk_Array_Decimal_Sign;
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
-    char    sFiller;
+    public string sFiller;
 }
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Pack=1)]
+[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode, Pack=1)]
 public struct _st_type2
 {
 
@@ -46,13 +46,75 @@ public struct _st_type2
     public string    sCombination_Margining_Flag;
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
     public string    sFiller2;
-    
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 96)]
-    public _st_type2_arr1[]    st_type2_arr1;
-    
 
+    //arr1
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 10)]
+    public string sCommodity_Code_a1;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 3)]
+    public string sContract_Type_a1;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Locator_a1;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Sign_a1;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sFiller_a1;
+
+    //arr2
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 10)]
+    public string sCommodity_Code_a2;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 3)]
+    public string sContract_Type_a2;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Locator_a2;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Sign_a2;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sFiller_a2;
+
+    //arr3
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 10)]
+    public string sCommodity_Code_a3;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 3)]
+    public string sContract_Type_a3;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Locator_a3;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Sign_a3;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sFiller_a3;
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 10)]
+    public string sCommodity_Code_a4;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 3)]
+    public string sContract_Type_a4;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Locator_a4;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Sign_a4;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sFiller_a4;
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 10)]
+    public string sCommodity_Code_a5;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 3)]
+    public string sContract_Type_a5;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Locator_a5;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Sign_a5;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sFiller_a5;
+
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 10)]
+    public string sCommodity_Code_a6;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 3)]
+    public string sContract_Type_a6;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Locator_a6;
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    public string sRisk_Array_Decimal_Sign_a6;
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 15)]
-    public string    sFiller3;
+    public string sFiller_a6;
 
 
 }

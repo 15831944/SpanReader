@@ -42,7 +42,7 @@ namespace SpanReader.screen
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             gridControl1.DataSource = CSpanData.Instance.dt_typeC;
-            gridView1.PopulateColumns();
+            GridView1.PopulateColumns();
         }
     }
 }

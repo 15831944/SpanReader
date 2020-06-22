@@ -8,26 +8,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using SpanReader.util;
 
-namespace SpanReader.screen
+namespace SpanReader.Mscreen
 {
-    public partial class filetype8 : DevExpress.XtraEditors.XtraUserControl
+    public partial class mRiskArray : DevExpress.XtraEditors.XtraUserControl
     {
-        private static filetype8 instance;
 
-        public filetype8()
+        private static mRiskArray instance;
+
+
+        public mRiskArray()
         {
             InitializeComponent();
         }
 
-        public static filetype8 Instance
+        public static mRiskArray Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new filetype8();
+                    instance = new mRiskArray();
 
 
                     ///Double click 이벤트를 등록한다. 
@@ -41,11 +42,8 @@ namespace SpanReader.screen
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            gridControl1.DataSource = CSpanData.Instance.dt_type81;
+            gridControl1.DataSource = util.CSpanData.Instance.RiskArray;
             gridView1.PopulateColumns();
-
-            gridControl2.DataSource = CSpanData.Instance.dt_type82;
-            gridView2.PopulateColumns();
         }
     }
 }

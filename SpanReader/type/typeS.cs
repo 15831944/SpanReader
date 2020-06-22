@@ -58,7 +58,7 @@ public struct _st_typeS
 
 
 
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 6)]
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
     public string sWeighted_Futures_Price_Risk_Caculation_Method;
 
     //Tier 1

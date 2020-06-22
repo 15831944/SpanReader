@@ -12,22 +12,18 @@ using SpanReader.util;
 
 namespace SpanReader.screen
 {
-    public partial class filetype8 : DevExpress.XtraEditors.XtraUserControl
+    public partial class filetype6 : DevExpress.XtraEditors.XtraUserControl
     {
-        private static filetype8 instance;
 
-        public filetype8()
-        {
-            InitializeComponent();
-        }
+        private static filetype6 instance;
 
-        public static filetype8 Instance
+        public static filetype6 Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new filetype8();
+                    instance = new filetype6();
 
 
                     ///Double click 이벤트를 등록한다. 
@@ -39,13 +35,16 @@ namespace SpanReader.screen
             }
         }
 
+
+        public filetype6()
+        {
+            InitializeComponent();
+        }
+
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            gridControl1.DataSource = CSpanData.Instance.dt_type81;
+            gridControl1.DataSource = CSpanData.Instance.dt_type6;
             gridView1.PopulateColumns();
-
-            gridControl2.DataSource = CSpanData.Instance.dt_type82;
-            gridView2.PopulateColumns();
         }
     }
 }

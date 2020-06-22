@@ -25,6 +25,32 @@ namespace SpanReader
             InitializeComponent();
         }
 
+
+
+        private void elmCME_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (!MainContainer.Controls.Contains(frmFTP.Instance))
+                {
+                    MainContainer.Controls.Add(frmFTP.Instance);
+                    frmFTP.Instance.Dock = DockStyle.Fill;
+                    frmFTP.Instance.BringToFront();
+
+                    //filetype2.Instance.PrintStat += PrintStat;
+                    frmFTP.Instance.Parent = this;
+                }
+                frmFTP.Instance.BringToFront();
+            }
+            catch (Exception ex)
+            {
+
+                //PrintStat(this, ex.Message);
+            }
+
+        }
+
         private void accordionControlElement3_Click(object sender, EventArgs e)
         {
             try
@@ -106,6 +132,29 @@ namespace SpanReader
                     filetype5.Instance.Parent = this;
                 }
                 filetype5.Instance.BringToFront();
+            }
+            catch (Exception ex)
+            {
+
+                //PrintStat(this, ex.Message);
+            }
+        }
+
+
+        private void elmFileType6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!MainContainer.Controls.Contains(filetype6.Instance))
+                {
+                    MainContainer.Controls.Add(filetype6.Instance);
+                    filetype6.Instance.Dock = DockStyle.Fill;
+                    filetype6.Instance.BringToFront();
+
+                    //filetype2.Instance.PrintStat += PrintStat;
+                    filetype6.Instance.Parent = this;
+                }
+                filetype6.Instance.BringToFront();
             }
             catch (Exception ex)
             {
@@ -248,6 +297,28 @@ namespace SpanReader
         }
 
 
+        private void elmRiskArray_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!MainContainer.Controls.Contains(mRiskArray.Instance))
+                {
+                    MainContainer.Controls.Add(mRiskArray.Instance);
+                    mRiskArray.Instance.Dock = DockStyle.Fill;
+                    mRiskArray.Instance.BringToFront();
+
+                    //filetype2.Instance.PrintStat += PrintStat;
+                    mRiskArray.Instance.Parent = this;
+                }
+                mRiskArray.Instance.BringToFront();
+            }
+            catch (Exception ex)
+            {
+
+                //PrintStat(this, ex.Message);
+            }
+        }
+
         private void elmTypeS_Click(object sender, EventArgs e)
         {
             try
@@ -347,6 +418,30 @@ namespace SpanReader
             }
         }
 
+
+
+        private void elmTierToTier_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (!MainContainer.Controls.Contains(IntraSpread.Instance))
+                {
+                    MainContainer.Controls.Add(IntraSpread.Instance);
+                    IntraSpread.Instance.Dock = DockStyle.Fill;
+                    IntraSpread.Instance.BringToFront();
+
+                    //filetype2.Instance.PrintStat += PrintStat;
+                    IntraSpread.Instance.Parent = this;
+                }
+                IntraSpread.Instance.BringToFront();
+            }
+            catch (Exception ex)
+            {
+
+                //PrintStat(this, ex.Message);
+            }
+        }
         private void elmMrktInfo_Click(object sender, EventArgs e)
         {
             try
@@ -369,6 +464,56 @@ namespace SpanReader
                 //PrintStat(this, ex.Message);
             }
         }
+
+
+        private void elmFilePModify_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (!MainContainer.Controls.Contains(mTypeP.Instance))
+                {
+                    MainContainer.Controls.Add(mTypeP.Instance);
+                    mTypeP.Instance.Dock = DockStyle.Fill;
+                    mTypeP.Instance.BringToFront();
+
+                    //filetype2.Instance.PrintStat += PrintStat;
+                    mTypeP.Instance.Parent = this;
+                }
+                mTypeP.Instance.BringToFront();
+            }
+            catch (Exception ex)
+            {
+
+                //PrintStat(this, ex.Message);
+            }
+        }
+
+
+
+        private void elmTierInfo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (!MainContainer.Controls.Contains(InterSpread.Instance))
+                {
+                    MainContainer.Controls.Add(InterSpread.Instance);
+                    InterSpread.Instance.Dock = DockStyle.Fill;
+                    InterSpread.Instance.BringToFront();
+
+                    //filetype2.Instance.PrintStat += PrintStat;
+                    InterSpread.Instance.Parent = this;
+                }
+                InterSpread.Instance.BringToFront();
+            }
+            catch (Exception ex)
+            {
+
+                //PrintStat(this, ex.Message);
+            }
+        }
+
         /// <summary>
         /// SPAN FILE을 LOAD 한다.
         /// </summary>
@@ -398,11 +543,11 @@ namespace SpanReader
                         strFileName = OpenDlg.FileName.ToString();
                     }
                 }
-              
-                using(StreamReader sReader = new StreamReader(strFileName))
+
+                using (StreamReader sReader = new StreamReader(strFileName))
                 {
                     string line;
-                    while((line = sReader.ReadLine()) != null)
+                    while ((line = sReader.ReadLine()) != null)
                     {
                         if (line.Substring(0, 2).ToString() == "1 ")
                         {
@@ -422,10 +567,10 @@ namespace SpanReader
 
                             CTrans<_st_type2> trans = new CTrans<_st_type2>();
                             st_type2 = trans.ByteToStruct(line);
-                                                        
+
                             CSpanData.Instance.mk_type2.AddData(st_type2);
-                           
-                            
+
+
                         }
 
                         else if (line.Substring(0, 2).ToString() == "3 ")
@@ -448,6 +593,18 @@ namespace SpanReader
                             st_type5 = trans.ByteToStruct(line);
 
                             CSpanData.Instance.mk_type5.AddData(st_type5);
+
+
+                        }
+
+                        else if (line.Substring(0, 2).ToString() == "6 ")
+                        {
+                            _st_type6 st_type6 = new _st_type6();
+
+                            CTrans<_st_type6> trans = new CTrans<_st_type6>();
+                            st_type6 = trans.ByteToStruct(line);
+
+                            CSpanData.Instance.mk_type6.AddData(st_type6);
 
 
                         }
@@ -567,6 +724,19 @@ namespace SpanReader
 
                 ///당사기준 품목과 연관된 SeriesToSeries 테이블을 만든다.
                 CSpanData.Instance.MakeSeriesToSeries();
+
+
+
+                CSpanData.Instance.MakefileP_modify();
+
+
+                CSpanData.Instance.MakeRiskArray();
+
+                CSpanData.Instance.MakefileC_Modify();
+
+                CSpanData.Instance.MakeInterTierInfo();
+                CSpanData.Instance.MakeIntraTierInfo();
+
             }
             catch (System.Exception ex)
             {
@@ -576,6 +746,5 @@ namespace SpanReader
 
         }
 
-      
     }
 }

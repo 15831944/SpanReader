@@ -11,6 +11,43 @@ namespace SpanReader.util
     public static class CUtil
     {
 
+        public static string GetStrikePrice(string fo_tp, string strike_price, string strike_decimal, string strike_alignment)
+        {
+            double strike_p = 0.0;
+
+            double dDecimal;
+            double dAlignment;
+
+            if (fo_tp == "FUT")
+            {
+                return "";
+            }
+
+            if (double.TryParse(strike_price, out strike_p) == false)
+            {
+                return "";
+            }
+
+
+            if (double.TryParse(strike_decimal, out dDecimal) == false)
+            {
+                return "";
+            }
+
+            if (double.TryParse(strike_alignment, out dAlignment) == false)
+            {
+                strike_p = strike_p / Math.Pow(10, dDecimal) ;
+            }
+            else
+            {
+                strike_p = strike_p / Math.Pow(10, dDecimal) * Math.Pow(10, dAlignment);
+            }
+
+               
+
+            return strike_p.ToString();
+        }
+
         public static DataTable GetMrktInfo()
         {
             DataTable dt = new DataTable();
@@ -792,6 +829,28 @@ namespace SpanReader.util
 
         }
 
+        public static string ConvertArrayValue(string sign, string value)
+        {
+            decimal val = 0;
+
+
+            if (sign.Trim() == "-")
+            {
+                val = Convert.ToDecimal(value) * -1;
+                return val.ToString();
+            }
+            else
+            {
+                val = Convert.ToDecimal(value);
+                return val.ToString();
+            }
+        }
+
+        /// <summary>
+        /// List 형태를 DataTable로 변환한다.
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
         public static DataTable LinqQueryToDataTable(IEnumerable<dynamic> v)
         {
             var firstRecord = v.FirstOrDefault();

@@ -10,24 +10,26 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SpanReader.util;
 
-namespace SpanReader.screen
+namespace SpanReader.Mscreen
 {
-    public partial class filetype8 : DevExpress.XtraEditors.XtraUserControl
+    public partial class IntraSpread : DevExpress.XtraEditors.XtraUserControl
     {
-        private static filetype8 instance;
 
-        public filetype8()
+        private static IntraSpread instance;
+
+
+        public IntraSpread()
         {
             InitializeComponent();
         }
 
-        public static filetype8 Instance
+        public static IntraSpread Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new filetype8();
+                    instance = new IntraSpread();
 
 
                     ///Double click 이벤트를 등록한다. 
@@ -41,10 +43,12 @@ namespace SpanReader.screen
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            gridControl1.DataSource = CSpanData.Instance.dt_type81;
+            gridControl1.DataSource = CSpanData.Instance.mFileC;
+            gridView1.OptionsView.AllowCellMerge = true;
             gridView1.PopulateColumns();
 
-            gridControl2.DataSource = CSpanData.Instance.dt_type82;
+            gridControl2.DataSource = CSpanData.Instance.mIntraTierInfo;
+            gridView2.OptionsView.AllowCellMerge = true;
             gridView2.PopulateColumns();
         }
     }

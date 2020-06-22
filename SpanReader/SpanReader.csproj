@@ -64,6 +64,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mscreen\frmFTP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mscreen\frmFTP.Designer.cs">
+      <DependentUpon>frmFTP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mscreen\mCCM.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -81,6 +87,30 @@
     </Compile>
     <Compile Include="Mscreen\mMrktInfo.Designer.cs">
       <DependentUpon>mMrktInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mscreen\mRiskArray.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mscreen\mRiskArray.Designer.cs">
+      <DependentUpon>mRiskArray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mscreen\InterSpread.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mscreen\InterSpread.Designer.cs">
+      <DependentUpon>InterSpread.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mscreen\mTypeP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mscreen\mTypeP.Designer.cs">
+      <DependentUpon>mTypeP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mscreen\IntraSpread.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mscreen\IntraSpread.Designer.cs">
+      <DependentUpon>IntraSpread.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +137,12 @@
     </Compile>
     <Compile Include="screen\filetype5.Designer.cs">
       <DependentUpon>filetype5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="screen\filetype6.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="screen\filetype6.Designer.cs">
+      <DependentUpon>filetype6.cs</DependentUpon>
     </Compile>
     <Compile Include="screen\filetype8.cs">
       <SubType>UserControl</SubType>
@@ -163,6 +199,7 @@
       <DependentUpon>spanMain.cs</DependentUpon>
     </Compile>
     <Compile Include="type\type1.cs" />
+    <Compile Include="type\type6.cs" />
     <Compile Include="type\type5.cs" />
     <Compile Include="type\type2 - 복사본.cs" />
     <Compile Include="type\type2.cs" />
@@ -179,12 +216,16 @@
     <Compile Include="type\typeT.cs" />
     <Compile Include="type\typeV.cs" />
     <Compile Include="type\typeX.cs" />
+    <Compile Include="util\CFTP.cs" />
     <Compile Include="util\CMakeDataTable.cs" />
     <Compile Include="util\CSpanData.cs" />
     <Compile Include="util\CTrans.cs" />
     <Compile Include="util\CUtil.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mscreen\frmFTP.resx">
+      <DependentUpon>frmFTP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mscreen\mCCM.resx">
       <DependentUpon>mCCM.cs</DependentUpon>
@@ -194,6 +235,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mscreen\mMrktInfo.resx">
       <DependentUpon>mMrktInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mscreen\mRiskArray.resx">
+      <DependentUpon>mRiskArray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mscreen\InterSpread.resx">
+      <DependentUpon>InterSpread.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mscreen\mTypeP.resx">
+      <DependentUpon>mTypeP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mscreen\IntraSpread.resx">
+      <DependentUpon>IntraSpread.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -216,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="screen\filetype5.resx">
       <DependentUpon>filetype5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="screen\filetype6.resx">
+      <DependentUpon>filetype6.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="screen\filetype8.resx">
       <DependentUpon>filetype8.cs</DependentUpon>

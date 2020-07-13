@@ -522,10 +522,15 @@ namespace SpanReader
         private void elmFileLoad_Click(object sender, EventArgs e)
         {
 
+
             string strFileName;
 
             try
             {
+                
+              
+
+
                 using (OpenFileDialog OpenDlg = new OpenFileDialog())
                 {
                     OpenDlg.InitialDirectory = @"D:\Span\Data";
@@ -544,9 +549,17 @@ namespace SpanReader
                     }
                 }
 
+                string caption = string.Format("SPAN FILE Loading 중 입니다. {0}", Path.GetFileName(strFileName));
+
+                splashScreenManager1.ShowWaitForm();
+                splashScreenManager1.SetWaitFormCaption(caption);
+                
+
                 using (StreamReader sReader = new StreamReader(strFileName))
                 {
                     string line;
+
+                    splashScreenManager1.SetWaitFormDescription("file type 별 구분 문석 중 입니다.");
                     while ((line = sReader.ReadLine()) != null)
                     {
                         if (line.Substring(0, 2).ToString() == "1 ")
@@ -717,33 +730,45 @@ namespace SpanReader
                     }
                 }
 
+                splashScreenManager1.SetWaitFormDescription("Market 정보를 Mapping 합니다.");
                 //DataTable dt2 = CSpanData.Instance.dt_type2;
                 ///당시기준 품목과 Mapping 테이블을 만든다.
                 CSpanData.Instance.MakeMarketInfo();
 
 
                 ///당사기준 품목과 연관된 SeriesToSeries 테이블을 만든다.
+                splashScreenManager1.SetWaitFormDescription("SeriesToSeries 정보를 생성합니다.");
                 CSpanData.Instance.MakeSeriesToSeries();
 
 
 
                 CSpanData.Instance.MakefileP_modify();
 
-
+                splashScreenManager1.SetWaitFormDescription("RiskArray 정보를 생성합니다. ");
                 CSpanData.Instance.MakeRiskArray();
 
                 CSpanData.Instance.MakefileC_Modify();
 
+                splashScreenManager1.SetWaitFormDescription("Inter Tier 정보를 생성합니다. ");
                 CSpanData.Instance.MakeInterTierInfo();
+
+
+                splashScreenManager1.SetWaitFormDescription("Intra Tier 정보를 생성합니다. ");
                 CSpanData.Instance.MakeIntraTierInfo();
 
+
+               
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
-           
+            finally
+            {
+                splashScreenManager1.CloseWaitForm();
+            }
 
+            XtraMessageBox.Show("Loading 완료 되었습니다.");
         }
 
     }

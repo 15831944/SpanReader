@@ -504,6 +504,8 @@ namespace SpanReader.util
         {
             try
             {
+                string tmpStrikeP = "";
+
                 var qry = (from type81 in CSpanData.Instance.dt_type81.AsEnumerable()
                            join type82 in CSpanData.instance.dt_type82.AsEnumerable() on new
                            {    
@@ -594,7 +596,10 @@ namespace SpanReader.util
                                    {
                                        EXCH_CD = mrktInfo.Field<string>("EXCH_CD"),
                                        MRKT_CD = mrktInfo.Field<string>("MRKT_CD"),
+                                       //tmpStrikeP = CUtil.GetStrikePrice(rArray, mrktInfo),//.Field<string>("sProduct_Type_Code"), rArray.Field<string>("sStrike_Price_Sign"), rArray.Field<string>("sOption_Strike_Price"), mrktInfo.Field<string>("sStrike_Price_Decimal"), mrktInfo.Field<string>("sStrike_Price_Alignment"), mrktInfo.Field<string>("sSettlement_Price_Alignment")),
 
+                                       SERIES = CUtil.GetSeries(rArray, mrktInfo),
+                                       //SERIES =     CUtil.GetSeries(rArray.Field<string>("sProduct_Type_Code"), mrktInfo.Field<string>("MRKT_CD"), rArray.Field<string>("sFutures_Ccyymm"), rArray.Field<string>("sOption_Ccyymm"), rArray.Field<string>("sOption_Right_Code"), tmpStrikeP),
                                        sExchange_Acronym = rArray.Field<string>("sExchange_Acronym"),
                                        sCommodity_Code = rArray.Field<string>("sCommodity_Code"),
                                        sUnderlying_Commodity_Code = rArray.Field<string>("sUnderlying_Commodity_Code"),
@@ -604,7 +609,10 @@ namespace SpanReader.util
                                        sOption_Ccyymm = rArray.Field<string>("sOption_Ccyymm"),
 
                                        sOption_Strike_Price = rArray.Field<string>("sOption_Strike_Price"),
-                                       Strike_Prie = CUtil.GetStrikePrice(rArray.Field<string>("sProduct_Type_Code"), rArray.Field<string>("sOption_Strike_Price"), mrktInfo.Field<string>("sStrike_Price_Decimal"), mrktInfo.Field<string>("sStrike_Price_Alignment") ),
+                                       Strike_Prie = CUtil.GetStrikePrice(rArray, mrktInfo),//.Field<string>("sProduct_Type_Code"), rArray.Field<string>("sStrike_Price_Sign"), rArray.Field<string>("sOption_Strike_Price"), mrktInfo.Field<string>("sStrike_Price_Decimal"), mrktInfo.Field<string>("sStrike_Price_Alignment"), mrktInfo.Field<string>("sSettlement_Price_Alignment")),
+
+                                       //Strike_Prie = CUtil.GetStrikePrice(rArray.Field<string>("sProduct_Type_Code"), rArray.Field<string>("sStrike_Price_Sign"),  rArray.Field<string>("sOption_Strike_Price"), mrktInfo.Field<string>("sStrike_Price_Decimal"), mrktInfo.Field<string>("sStrike_Price_Alignment"), mrktInfo.Field<string>("sSettlement_Price_Alignment")),
+
                                        sStrike_Price_Decimal = mrktInfo.Field<string>("sStrike_Price_Decimal"),
                                        sStrike_Price_Sign = rArray.Field<string>("sStrike_Price_Sign"),
                                        sStrike_Price_Alignment = mrktInfo.Field<string>("sStrike_Price_Alignment"),

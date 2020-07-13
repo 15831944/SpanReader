@@ -11,43 +11,367 @@ namespace SpanReader.util
     public static class CUtil
     {
 
-        public static string GetStrikePrice(string fo_tp, string strike_price, string strike_decimal, string strike_alignment)
+        /// <summary>
+        /// 종목코드를 생성한다.
+        /// </summary>
+        /// <param name="rArray"></param>
+        /// <param name="mrktInfo"></param>
+        /// <returns></returns>
+        public static string GetSeries(DataRow rArray, DataRow mrktInfo)
+        {
+            string series = "";
+            string tmpStrikeP = "";
+
+            try
+            {
+                tmpStrikeP = GetStrikePrice(rArray.Field<string>("sProduct_Type_Code"), rArray.Field<string>("sStrike_Price_Sign"), rArray.Field<string>("sOption_Strike_Price"), mrktInfo.Field<string>("sStrike_Price_Decimal"), mrktInfo.Field<string>("sStrike_Price_Alignment"), mrktInfo.Field<string>("sSettlement_Price_Alignment"));
+
+                series = GetSeries(rArray.Field<string>("sProduct_Type_Code"), mrktInfo.Field<string>("MRKT_CD"), rArray.Field<string>("sFutures_Ccyymm"), rArray.Field<string>("sOption_Ccyymm"), rArray.Field<string>("sOption_Right_Code"), tmpStrikeP);
+
+                return series;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
+
+        /// <summary>
+        /// 종목 코드를 생성한다.
+        /// </summary>
+        /// <param name="fo_tp"></param>
+        /// <param name="mrkt_cd"></param>
+        /// <param name="strFut_yyyymmdd"></param>
+        /// <param name="strOpt_yyyymmdd"></param>
+        /// <param name="strOpt_right"></param>
+        /// <param name="strOptStrikeP"></param>
+        /// <returns></returns>
+        public static string GetSeries(string fo_tp, string mrkt_cd, string strFut_yyyymmdd, string strOpt_yyyymmdd, string strOpt_right, string strOptStrikeP)
+        {
+            DateTime mrkt_month;
+            string strMonth_symbol = "";
+            string series = "";
+
+
+            if (fo_tp == "FUT")
+            {
+                mrkt_month = DateTime.ParseExact(strFut_yyyymmdd, "yyyyMM", null);
+            }
+            else
+            {
+                mrkt_month = DateTime.ParseExact(strOpt_yyyymmdd, "yyyyMM", null);
+            }
+
+
+
+            string strMonth = mrkt_month.ToString("MM");
+            string strYear = mrkt_month.ToString("yy");
+
+            switch (Convert.ToInt32(strMonth))
+            {
+                case 1:
+                    strMonth_symbol = "F";
+                    break;
+                case 2:
+                    strMonth_symbol = "G";
+                    break;
+                case 3:
+                    strMonth_symbol = "H";
+                    break;
+                case 4:
+                    strMonth_symbol = "J";
+                    break;
+                case 5:
+                    strMonth_symbol = "K";
+                    break;
+                case 6:
+                    strMonth_symbol = "M";
+                    break;
+                case 7:
+                    strMonth_symbol = "N";
+                    break;
+                case 8:
+                    strMonth_symbol = "Q";
+                    break;
+                case 9:
+                    strMonth_symbol = "U";
+                    break;
+                case 10:
+                    strMonth_symbol = "V";
+                    break;
+
+                case 11:
+                    strMonth_symbol = "X";
+                    break;
+                case 12:
+                    strMonth_symbol = "Z";
+                    break;
+
+                default:
+                    break;
+            }
+
+
+            if (fo_tp == "FUT")
+            {
+                series = string.Format("{0}{1}{2}", mrkt_cd, strMonth_symbol, strYear);
+            }
+            else
+            {
+                series = string.Format("{0}{1}{2}_{3}{4}", mrkt_cd, strMonth_symbol, strYear, strOpt_right, strOptStrikeP);
+            }
+
+            return series;
+
+
+
+               
+        }
+
+
+
+        public static string GetSettleP(DataRow rArray, DataRow mrktInfo)
+        {
+            string settleP = "";
+            try
+            {
+                settleP = GetSettleP(rArray.Field<string>("sProduct_Type_Code"), rArray.Field<string>("sSettlement_Price"), mrktInfo.Field<string>("sSettlement_Price_Decimal"), mrktInfo.Field<string>("sSettlement_Price_Alignment"));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return settleP.ToString();
+        }
+
+       
+        public static string GetSettleP(string fo_tp, string sSettlement_Price, string sSettlement_Price_Decimal, string sSettlement_Price_Alignment)
+        {
+            double settleP = 0.0;
+            double settle_decimal = 0.0;
+            double settle_P_point = 0.0;
+
+            try
+            {
+                //정산가 raw data가 숫자로 바뀌지 않으면 오류
+                if (double.TryParse(sSettlement_Price, out settleP) == false)
+                {
+                    return "";
+                }
+
+                //정산가 소수점 자리수가 raw data가 숫자로 바뀌지 않으면 오류
+                if (double.TryParse(sSettlement_Price_Decimal, out settle_decimal) == false)
+                {
+                    return "";
+                }
+
+                if (sSettlement_Price_Alignment.Trim() != "0")
+                {
+                    settleP = settleP / Math.Pow(10, settle_decimal);
+
+                }
+
+
+
+             
+                if (sSettlement_Price_Alignment.Trim() == "C" || sSettlement_Price_Alignment.Trim() == "K")
+                { int dotPoint = 0;
+
+                    string middle_value = "";
+                    dotPoint = settleP.ToString().IndexOf('1');
+
+                    middle_value = settleP.ToString().Substring(dotPoint, 2);
+                    settle_P_point = Math.Round(settleP - Math.Floor(settleP), 5);
+
+                    switch (settle_P_point)
+                    {
+                        case 0.1:
+                            settle_P_point = 0.125;
+                            break;
+                        case 0.2:
+                            settle_P_point = 0.25;
+                            break;
+                        case 0.3:
+                            settle_P_point = 0.375;
+                            break;
+                        case 0.6:
+                            settle_P_point = 0.625;
+                            break;
+                        case 0.7:
+                            settle_P_point = 0.75;
+                            break;
+                        case 0.8:
+                            settle_P_point = 0.875;
+                            break;
+                        default:
+
+                            break;
+                    }
+
+                    //strike_p = strike_p + strike_P_point;
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+            return settleP.ToString();
+        }
+
+        /// <summary>
+        /// 행사가를 산출한다.
+        /// </summary>
+        /// <param name="rArray"></param>
+        /// <param name="mrktInfo"></param>
+        /// <returns></returns>
+        public static string GetStrikePrice(DataRow rArray, DataRow mrktInfo)
+        {
+            string tmpStrike = "";
+            try
+            {
+                if (mrktInfo.Field<string>("MRKT_CD") == "OZT")
+                {
+
+                }
+                tmpStrike = GetStrikePrice(rArray.Field<string>("sProduct_Type_Code"), rArray.Field<string>("sStrike_Price_Sign"), rArray.Field<string>("sOption_Strike_Price"), mrktInfo.Field<string>("sStrike_Price_Decimal"), mrktInfo.Field<string>("sStrike_Price_Alignment"), mrktInfo.Field<string>("sSettlement_Price_Alignment"));
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return tmpStrike;
+        }
+        /// <summary>
+        /// 행사가를 계산한다.
+        /// </summary>
+        /// <param name="fo_tp"></param>
+        /// <param name="strike_price"></param>
+        /// <param name="strike_decimal"></param>
+        /// <param name="strike_alignment"></param>
+        /// <returns></returns>
+        public static string GetStrikePrice(string fo_tp, string strike_sign, string strike_price, string strike_decimal, string strike_alignment, string settlement_alignment)
         {
             double strike_p = 0.0;
-
+            double strike_P_point = 0.0;
             double dDecimal;
-            double dAlignment;
 
+            double dStrike_Alignment;
+            double dPlus = 1;
+
+            if (strike_sign == "-")
+            {
+                dPlus = -1;
+            }
+            //선물일때는 행사가가 필요없다.
             if (fo_tp == "FUT")
             {
                 return "";
             }
 
-            if (double.TryParse(strike_price, out strike_p) == false)
+            try
             {
-                return "";
-            }
+                //행사가 raw data가 숫자로 바뀌지 않으면 오류
+                if (double.TryParse(strike_price, out strike_p) == false)
+                {
+                    return "";
+                }
+
+                //행사가 소수점 정보 raw data가 숫자로 바뀌지 않으면 오류
+                if (double.TryParse(strike_decimal, out dDecimal) == false)
+                {
+                    return "";
+                }
+
+                //settlement_alignment 가 C, K 이면 진법표현 형식을 나타냄
+                //0 이면 소숫점과 Alignment를 무시함
+                //공백이면 행사가 소숫점 정보를 따름 
+                if (settlement_alignment.Trim() != "0")
+                {
+                    //행사가 raw data가 숫자로 바뀌지 않으면 공백또는 오류
+                    if (double.TryParse(strike_alignment, out dStrike_Alignment) == false)
+                    {
+                        strike_p = strike_p / Math.Pow(10, dDecimal);
+                    }
+                    else
+                    {
+                        strike_p = strike_p / Math.Pow(10, dDecimal) * Math.Pow(10, dStrike_Alignment);
+                    }                    
+                }
 
 
-            if (double.TryParse(strike_decimal, out dDecimal) == false)
-            {
-                return "";
-            }
 
-            if (double.TryParse(strike_alignment, out dAlignment) == false)
-            {
-                strike_p = strike_p / Math.Pow(10, dDecimal) ;
-            }
-            else
-            {
-                strike_p = strike_p / Math.Pow(10, dDecimal) * Math.Pow(10, dAlignment);
-            }
+                if (settlement_alignment.Trim() == "0")
+                {
 
+                }
+                else if (settlement_alignment.Trim() == "C" || settlement_alignment.Trim() == "K")
+                {
+
+                    strike_P_point = Math.Round(strike_p - Math.Floor(strike_p), 5);
+
+                    switch (strike_P_point)
+                    {
+                        case 0.1:
+                            strike_P_point = 0.125;
+                            break;
+                        case 0.2:
+                            strike_P_point = 0.25;
+                            break;
+                        case 0.3:
+                            strike_P_point = 0.375;
+                            break;
+                        case 0.6:
+                            strike_P_point = 0.625;
+                            break;
+                        case 0.7:
+                            strike_P_point = 0.75;
+                            break;
+                        case 0.8:
+                            strike_P_point = 0.875;
+                            break;
+                        default:
+                                
+                            break;
+                    }
+
+                    strike_p = strike_p + strike_P_point;
+
+
+                }
+
+                strike_p = strike_p * dPlus;
+                return strike_p.ToString();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
                
 
             return strike_p.ToString();
         }
 
+        /// <summary>
+        /// Market정보를 구성한다. 
+        /// 임시정보
+        /// </summary>
+        /// <returns></returns>
         public static DataTable GetMrktInfo()
         {
             DataTable dt = new DataTable();

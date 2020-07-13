@@ -89,11 +89,11 @@ public struct _st_type82
     public string    sStart_Of_Day_Price;
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
     public string    sStart_Of_Day_Price_Sign;
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
     public string    sImplied_Volatility_Exponent;
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)]
     public string    sImplied_Volatility_Exponent_Sign;
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 4)]
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
     public string    sCont_Cont_Val_Fact;
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
     public string    sCont_Cont_Val_Fact_Exp;

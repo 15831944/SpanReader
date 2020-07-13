@@ -32,6 +32,7 @@
             this.MainContainer = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.elmCME = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.elmFileLoad = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -60,7 +61,7 @@
             this.elmTierInfo = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
-            this.elmCME = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SpanReader.screen.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -96,6 +97,13 @@
             this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "FTP";
+            // 
+            // elmCME
+            // 
+            this.elmCME.Name = "elmCME";
+            this.elmCME.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.elmCME.Text = "CME 연결";
+            this.elmCME.Click += new System.EventHandler(this.elmCME_Click);
             // 
             // accordionControlElement4
             // 
@@ -313,12 +321,9 @@
             // 
             this.xtraOpenFileDialog1.FileName = "xtraOpenFileDialog1";
             // 
-            // elmCME
+            // splashScreenManager1
             // 
-            this.elmCME.Name = "elmCME";
-            this.elmCME.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.elmCME.Text = "CME 연결";
-            this.elmCME.Click += new System.EventHandler(this.elmCME_Click);
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // spanMain
             // 
@@ -372,5 +377,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement elmTierInfo;
         private DevExpress.XtraBars.Navigation.AccordionControlElement elmFileType6;
         private DevExpress.XtraBars.Navigation.AccordionControlElement elmCME;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

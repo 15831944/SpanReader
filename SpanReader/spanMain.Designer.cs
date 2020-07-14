@@ -62,6 +62,7 @@
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SpanReader.screen.WaitForm1), true, true);
+            this.elmMargin = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -261,7 +262,8 @@
             this.elmRiskArray,
             this.elmSeriesToSeries,
             this.elmTierToTier,
-            this.elmTierInfo});
+            this.elmTierInfo,
+            this.elmMargin});
             this.accordionControlElement3.Expanded = true;
             this.accordionControlElement3.Name = "accordionControlElement3";
             this.accordionControlElement3.Text = "당사기준";
@@ -325,6 +327,13 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // elmMargin
+            // 
+            this.elmMargin.Name = "elmMargin";
+            this.elmMargin.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.elmMargin.Text = "계약당 증거금(선물증거금)";
+            this.elmMargin.Click += new System.EventHandler(this.elmMargin_Click);
+            // 
             // spanMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
@@ -378,5 +387,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement elmFileType6;
         private DevExpress.XtraBars.Navigation.AccordionControlElement elmCME;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement elmMargin;
     }
 }

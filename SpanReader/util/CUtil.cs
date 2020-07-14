@@ -12,6 +12,28 @@ namespace SpanReader.util
     {
 
         /// <summary>
+        /// 증거금 구간중 최대 값을 구한다.
+        /// </summary>
+        /// <param name="rArray"></param>
+        /// <returns></returns>
+        public static string GetMaxArrayValue(DataRow rArray)
+        {
+            DataTable Dt = rArray.Table.Clone();
+            Dt.ImportRow(rArray);
+            Dt.Columns.Remove("MRKT_CD");
+
+            List<decimal> dArray = new List<decimal>();
+
+            foreach (var item in Dt.Rows[0].ItemArray)
+            {
+                dArray.Add(Convert.ToDecimal(item));
+            }
+
+
+            return dArray.Max().ToString();
+        }
+
+        /// <summary>
         /// 종목코드를 생성한다.
         /// </summary>
         /// <param name="rArray"></param>

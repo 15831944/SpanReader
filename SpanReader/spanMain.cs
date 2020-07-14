@@ -514,6 +514,29 @@ namespace SpanReader
             }
         }
 
+
+        private void elmMargin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (!MainContainer.Controls.Contains(frmFutMargin.Instance))
+                {
+                    MainContainer.Controls.Add(frmFutMargin.Instance);
+                    frmFutMargin.Instance.Dock = DockStyle.Fill;
+                    frmFutMargin.Instance.BringToFront();
+
+                    //filetype2.Instance.PrintStat += PrintStat;
+                    frmFutMargin.Instance.Parent = this;
+                }
+                frmFutMargin.Instance.BringToFront();
+            }
+            catch (Exception ex)
+            {
+
+                //PrintStat(this, ex.Message);
+            }
+        }
         /// <summary>
         /// SPAN FILE을 LOAD 한다.
         /// </summary>
@@ -756,6 +779,9 @@ namespace SpanReader
                 splashScreenManager1.SetWaitFormDescription("Intra Tier 정보를 생성합니다. ");
                 CSpanData.Instance.MakeIntraTierInfo();
 
+                splashScreenManager1.SetWaitFormDescription("계약당 증거금 정보를 생성합니다. ");
+                CSpanData.Instance.MakeMarginInfo();
+
 
                
             }
@@ -765,11 +791,16 @@ namespace SpanReader
             }
             finally
             {
-                splashScreenManager1.CloseWaitForm();
+                if (splashScreenManager1.IsSplashFormVisible)
+                {
+                    splashScreenManager1.CloseWaitForm();
+                }
+                
             }
 
             XtraMessageBox.Show("Loading 완료 되었습니다.");
         }
 
+ 
     }
 }

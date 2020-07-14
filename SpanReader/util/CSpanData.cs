@@ -75,6 +75,8 @@ namespace SpanReader.util
 
         public DataTable RiskArray;
 
+        //선물 계약당 증거금
+        public DataTable FutMargin;
 
         public DataTable mFileP;
 
@@ -665,6 +667,92 @@ namespace SpanReader.util
             }
         }
 
+        /// <summary>
+        /// RiskArray로 부터 계약당 증거금을 찾는다.
+        /// </summary>
+        public void MakeMarginInfo()
+        {
+            try
+            {
+                var qry = (from riskarray in RiskArray.AsEnumerable()
+                           where riskarray.Field<string>("sProduct_Type_Code") == "FUT"
+                           group riskarray by riskarray.Field<string>("MRKT_CD") into g
+                           select new
+                           {
+                               
+                               MRKT_CD = g.Key,
+                               ARRAY1 = g.Max(p => p.Field<string>("sArray_1_Value")),
+                               ARRAY2 = g.Max(p => p.Field<string>("sArray_2_Value")),
+                               ARRAY3 = g.Max(p => p.Field<string>("sArray_3_Value")),
+                               ARRAY4 = g.Max(p => p.Field<string>("sArray_4_Value")),
+                               ARRAY5 = g.Max(p => p.Field<string>("sArray_5_Value")),
+                               ARRAY6 = g.Max(p => p.Field<string>("sArray_6_Value")),
+                               ARRAY7 = g.Max(p => p.Field<string>("sArray_7_Value")),
+                               ARRAY8 = g.Max(p => p.Field<string>("sArray_8_Value")),
+                               ARRAY9 = g.Max(p => p.Field<string>("sArray_9_Value")),
+                               ARRAY10 = g.Max(p => p.Field<string>("sArray_10_Value")),
+                               ARRAY11 = g.Max(p => p.Field<string>("sArray_11_Value")),
+                               ARRAY12 = g.Max(p => p.Field<string>("sArray_12_Value")),
+                               ARRAY13 = g.Max(p => p.Field<string>("sArray_13_Value")),
+                               ARRAY14 = g.Max(p => p.Field<string>("sArray_14_Value")),
+                               ARRAY15 = g.Max(p => p.Field<string>("sArray_15_Value")),
+                               ARRAY16 = g.Max(p => p.Field<string>("sArray_16_Value")),
+
+                           }).Distinct();
+
+                DataTable tmpQry = CUtil.LinqQueryToDataTable(qry);
+                
+
+                //아직 계약당 증거금은 산출되지 않았다
+
+                var qry2 = from array in tmpQry.AsEnumerable()
+                           select new
+                           {
+                               MRKT_CD = array.Field<string>("MRKT_CD"),
+                               MARGIN = CUtil.GetMaxArrayValue(array)
+                           };
+
+                DataTable tmpMargin = CUtil.LinqQueryToDataTable(qry2);
+
+                var qry3 = (from arrayList in tmpQry.AsEnumerable()
+                            join margin in tmpMargin.AsEnumerable() on new
+                            {
+                                MRKT_CD = arrayList.Field<string>("MRKT_CD")
+                            }
+                            equals new
+                            {
+                                MRKT_CD = margin.Field<string>("MRKT_CD")
+                            }
+                            select new
+                            {
+                                MRKT_CD = arrayList.Field<string>("MRKT_CD"),
+                                MARGIN = margin.Field<string>("MARGIN"),
+                                ARRAY1 = arrayList.Field<string>("ARRAY1"),
+                                ARRAY2 = arrayList.Field<string>("ARRAY2"),
+                                ARRAY3 = arrayList.Field<string>("ARRAY3"),
+                                ARRAY4 = arrayList.Field<string>("ARRAY4"),
+                                ARRAY5 = arrayList.Field<string>("ARRAY5"),
+                                ARRAY6 = arrayList.Field<string>("ARRAY6"),
+                                ARRAY7 = arrayList.Field<string>("ARRAY7"),
+                                ARRAY8 = arrayList.Field<string>("ARRAY8"),
+                                ARRAY9 = arrayList.Field<string>("ARRAY9"),
+                                ARRAY10 = arrayList.Field<string>("ARRAY10"),
+                                ARRAY11 = arrayList.Field<string>("ARRAY11"),
+                                ARRAY12 = arrayList.Field<string>("ARRAY12"),
+                                ARRAY13 = arrayList.Field<string>("ARRAY13"),
+                                ARRAY14 = arrayList.Field<string>("ARRAY14"),
+                                ARRAY15 = arrayList.Field<string>("ARRAY15"),
+                                ARRAY16 = arrayList.Field<string>("ARRAY16")
+                            }).ToList();
+
+                FutMargin = CUtil.LinqQueryToDataTable(qry3);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
         public void MakeIntraTierInfo()
         {
